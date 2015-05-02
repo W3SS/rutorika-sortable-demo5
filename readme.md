@@ -1,6 +1,8 @@
 [rutorika sortable](https://github.com/boxfrommars/rutorika-sortable) demo (Laravel 5)
 
 # Install
+
+```bash
 xu@calypso:~$ git clone git@github.com:boxfrommars/rutorika-sortable-demo5.git
 xu@calypso:~$ cd rutorika-sortable-demo5/
 xu@calypso:~$ cp ./.env.example ./.env
@@ -14,3 +16,4 @@ mysql> FLUSH PRIVILEGES;
 
 xu@calypso:~$ php artisan migrate
 xu@calypso:~$ php artisan db:seed
+```
