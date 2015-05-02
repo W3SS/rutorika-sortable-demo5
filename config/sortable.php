@@ -1,6 +1,7 @@
 <?php
 return [
     'entities' => [
-         'articles' => '\App\Article',
+        'articles' => '\App\Article',
+        'grouped_articles' => '\App\GroupedArticle',
     ]
 ];
