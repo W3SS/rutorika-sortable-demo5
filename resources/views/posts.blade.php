@@ -5,17 +5,9 @@
 
     @foreach ($posts as $post)
         <h4>{{ $post->title }}</h4>
-        <h5>Tags</h5>
 
+        <h6>Tags</h6>
         <table class="table table-striped table-hover" style="margin-bottom: 5em;">
-            <thead>
-            <tr>
-                <th></th>
-                <th>#</th>
-                <th>title</th>
-                <th></th>
-            </tr>
-            </thead>
             <tbody class="sortable" data-entityname="posts">
             @foreach ($post->tags as $tag)
                 <tr data-itemId="{{ $tag->id }}" data-parentId="{{ $post->id }}">
