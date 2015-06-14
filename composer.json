@@ -9,7 +9,7 @@
   "type": "project",
   "require": {
     "laravel/framework": "5.0.*",
-    "rutorika/sortable": "2.*"
+    "rutorika/sortable": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0",

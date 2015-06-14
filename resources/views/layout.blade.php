@@ -53,6 +53,7 @@
         <ul class="nav navbar-nav">
             <li><a href="/">Articles</a></li>
             <li><a href="/grouped">Grouped articles</a></li>
+            <li><a href="/posts">Many to many</a></li>
         </ul>
         <p class="navbar-text navbar-right">Signed in as <a class="navbar-link" href="#">Administrator</a></p>
     </div><!-- /.navbar-collapse -->
@@ -125,25 +126,14 @@
     };
 
     /**
-     *
-     * @param type string 'insertAfter' or 'insertBefore'
-     * @param entityName
-     * @param id
-     * @param positionId
+     * @param {*} requestData
      */
-    var changePosition = function(type, entityName, id, positionId){
-
-        var deferred = $.Deferred();
+    var changePosition = function(requestData){
 
         $.ajax({
             'url': '/sort',
             'type': 'POST',
-            'data': {
-                'type': type,
-                'entityName': entityName,
-                'id': id,
-                'positionEntityId': positionId
-            },
+            'data': requestData,
             'success': function(data) {
                 if (data.success) {
                     App.notify.success('Saved!');
@@ -153,13 +143,8 @@
             },
             'error': function(){
                 App.notify.danger('Something wrong!');
-            },
-            'complete': function(){
-                deferred.resolve(undefined);
             }
         });
-
-        return deferred.promise();
     };
 
     $(document).ready(function(){
@@ -176,17 +161,21 @@
                     var $previous = $sorted.prev();
                     var $next = $sorted.next();
 
-                    var promise;
-
                     if ($previous.length > 0) {
-                        promise = changePosition('moveAfter', entityName, $sorted.data('itemid'), $previous.data('itemid'));
-                        $.when(promise).done(function(){
-                            // do smth
+                        changePosition({
+                            parentId: $sorted.data('parentid'),
+                            type: 'moveAfter',
+                            entityName: entityName,
+                            id: $sorted.data('itemid'),
+                            positionEntityId: $previous.data('itemid')
                         });
                     } else if ($next.length > 0) {
-                        promise = changePosition('moveBefore', entityName, $sorted.data('itemid'), $next.data('itemid'));
-                        $.when(promise).done(function(){
-                            // do smth
+                        changePosition({
+                            parentId: $sorted.data('parentid'),
+                            type: 'moveBefore',
+                            entityName: entityName,
+                            id: $sorted.data('itemid'),
+                            positionEntityId: $next.data('itemid')
                         });
                     } else {
                         App.notify.danger('Something wrong!');

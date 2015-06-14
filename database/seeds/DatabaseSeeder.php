@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
         $this->call('ArticlesSeeder');
+        $this->call('TagsSeeder');
+        $this->call('PostsSeeder');
     }
 
 }

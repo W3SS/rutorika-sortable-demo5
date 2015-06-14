@@ -31,5 +31,10 @@ Route::get('/grouped', function () {
     return View::make('grouped_articles', array('firstArticles' => $firstArticles, 'secondArticles' => $secondArticles));
 });
 
+Route::get('/posts', function () {
+    $posts = \App\Post::all();
+    return View::make('posts', array('posts' => $posts));
+});
+
 
 Route::post('sort', '\Rutorika\Sortable\SortableController@sort');
