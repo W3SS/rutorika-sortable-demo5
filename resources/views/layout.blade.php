@@ -54,6 +54,7 @@
             <li><a href="/">Articles</a></li>
             <li><a href="/grouped">Grouped articles</a></li>
             <li><a href="/posts">Many to many</a></li>
+            <li><a href="/albums-and-videos">Polymorphic many to many (inversed)</a></li>
         </ul>
         <p class="navbar-text navbar-right">Signed in as <a class="navbar-link" href="#">Administrator</a></p>
     </div><!-- /.navbar-collapse -->

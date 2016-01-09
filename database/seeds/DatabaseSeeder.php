@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call('ArticlesSeeder');
         $this->call('TagsSeeder');
         $this->call('PostsSeeder');
+        $this->call('MorphableSeeder');
     }
 
 }

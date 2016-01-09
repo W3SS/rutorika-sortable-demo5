@@ -36,5 +36,10 @@ Route::get('/posts', function () {
     return View::make('posts', array('posts' => $posts));
 });
 
+Route::get('/albums-and-videos', function () {
+    $authors = \App\Author::all();
+    return View::make('albums-and-videos-inversed', array('authors' => $authors));
+});
+
 
 Route::post('sort', '\Rutorika\Sortable\SortableController@sort');
